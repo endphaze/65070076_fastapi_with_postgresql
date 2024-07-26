@@ -22,5 +22,5 @@ class Book(Base):
     detail = Column(String, index=True)
     category = Column(String, index=True)
     synopsis = Column(String, index=True)
-    year = Column(Numeric, index=True)
+    year = Column(String, index=True)
     is_published = Column(Boolean, index=True)
