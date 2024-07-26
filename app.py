@@ -36,6 +36,11 @@ app.add_middleware(
 async def get_students(db: Session = Depends(get_db)):
     return db.query(models.Student).all()
 
+@router_v1.get('/books')
+async def get_books(db: Session = Depends(get_db)):
+    return db.query(models.Book).all()
+
+
 @router_v1.post('/students/testbody')
 async def get_student(student: dict, db: Session = Depends(get_db)):
     print()
@@ -69,6 +74,8 @@ async def delete_student(student_id: str, response: Response, db: Session = Depe
     db.commit()
     response.status_code = 200
     return db.query(models.Student).all()
+
+
 
 app.include_router(router_v1)
 
