@@ -75,13 +75,11 @@ async def delete_student(student_id: str, response: Response, db: Session = Depe
 
 #route for books
 @router_v1.get('/books')
-async def get_books(db: Session = Depends(get_db)):
-    return db.query(models.Book).all()
+async def get_coffees(db: Session = Depends(get_db)):
+    return db.query(models.Coffee).all()
 
-#route for coffees
-@router_v1.get('/coffees')
-async def get_coffess(db: Session = Depends(get_db)):
-    return "กาแฟ"
+
+    
 
 #route for orderDetail 
 @router_v1.get('/orderDetail')
@@ -139,6 +137,7 @@ async def create_order(request: dict, response: Response, db: Session = Depends(
         
     db.commit()
     return newOrderDetail
+
 
 
 app.include_router(router_v1)
