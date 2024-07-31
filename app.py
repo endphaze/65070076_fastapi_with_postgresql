@@ -81,7 +81,7 @@ async def get_books(db: Session = Depends(get_db)):
 #route for coffees
 @router_v1.get('/coffees')
 async def get_coffess(db: Session = Depends(get_db)):
-    return db.query(models.Coffee).all()
+    return "กาแฟ"
 
 #route for orderDetail 
 @router_v1.get('/orderDetail')
