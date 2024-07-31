@@ -36,7 +36,7 @@ app.add_middleware(
 
 @router_v1.get('/test')
 async def get_students(db: Session = Depends(get_db)):
-    return "testqqqqq"
+    return "testqqqcqq"
 
 @router_v1.get('/students')
 async def get_students(db: Session = Depends(get_db)):
