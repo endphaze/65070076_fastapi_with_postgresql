@@ -34,6 +34,10 @@ app.add_middleware(
 
 #route for students
 
+@router_v1.get('/test')
+async def get_students(db: Session = Depends(get_db)):
+    return "testqqqqq"
+
 @router_v1.get('/students')
 async def get_students(db: Session = Depends(get_db)):
     return db.query(models.Student).all()
