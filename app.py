@@ -78,9 +78,14 @@ async def delete_student(student_id: str, response: Response, db: Session = Depe
 
 
 #route for books
-@router_v1.get('/books')
+@router_v1.get('/books/{book_id}')
+async def get_student(book_id: str, db: Session = Depends(get_db)):
+    return db.query(models.Book).filter(models.Book.id == book_id).first()
+
+@router_v1.get('/books/')
 async def get_books(db: Session = Depends(get_db)):
     return db.query(models.Book).all()
+
 
 #route for coffees
 @router_v1.get('/coffees')
