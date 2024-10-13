@@ -11,7 +11,7 @@ app = FastAPI()
 load_dotenv()
 
 
-@app.post('/siem_hook')
+@app.post('/webhook')
 def hello_world(data: dict):
     url = os.environ.get("discord_webhook_url") 
 
