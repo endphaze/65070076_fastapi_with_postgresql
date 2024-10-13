@@ -34,6 +34,9 @@ app.add_middleware(
 
 #route for students
 
+
+
+
 @router_v1.get('/test')
 async def get_students(db: Session = Depends(get_db)):
     return "testqqqcqq"
@@ -46,6 +49,10 @@ async def get_students(db: Session = Depends(get_db)):
 async def get_student(student: dict, db: Session = Depends(get_db)):
     print()
     return student
+
+@router_v1.post('/siem_hook')
+async def post_network(data: dict):
+    return data
 
 @router_v1.get('/students/{student_id}') #read
 async def get_student(student_id: str, db: Session = Depends(get_db)):
