@@ -1,22 +1,27 @@
 from fastapi import FastAPI
 from fastapi.params import Body
 import requests
-
+import json
+from dotenv import load_dotenv, dotenv_values
+import os
 
 app = FastAPI()
 
 
+load_dotenv()
+
 
 @app.post('/siem_hook')
 def hello_world(data: dict):
-    url = "https://discord.com/api/webhooks/1293399469987205151/zyHHdYRLLEG7G9FtdWADwPMUj3NBWbzV1ssWfWW-hlq5MyEKmXwzAkrNivUWMx2aLK2K"
+    url = os.environ.get("discord_webhook_url") 
 
+    json_obj = json.dumps(data, indent=4)
     payload = {
-        'content' : f'{data}'
+        'content' : f'```json\n{json_obj}```'
     }
 
     requests.api.post(url, payload)
-
+    
 
 
 
@@ -24,3 +29,4 @@ def hello_world(data: dict):
 if __name__ == '__main__':
     import uvicorn
     uvicorn.run(app)
+
